@@ -12,22 +12,14 @@ if (-not $name) {
     $name = $Request.Body.Name
 }
 
-if ($name) {
-    # Write the $name value to the queue, 
-    # which is the name passed to the function.
-    $outputMsg = $name
-    Push-OutputBinding -name msg -Value $outputMsg
+$body = "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
 
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
-}
-else {
-    $status = [HttpStatusCode]::BadRequest
-    $body = "Please pass a name on the query string or in the request body!."
+if ($name) {
+    $body = "Hello, $name. This HTTP triggered function executed successfully."
 }
 
 # Associate values to output bindings by calling 'Push-OutputBinding'.
 Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
-    StatusCode = $status
+    StatusCode = [HttpStatusCode]::OK
     Body = $body
 })

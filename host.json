@@ -1,10 +1,10 @@
 {
   "version": "2.0",
   "managedDependency": {
-    "enabled": true
+    "Enabled": true
   },
   "extensionBundle": {
     "id": "Microsoft.Azure.Functions.ExtensionBundle",
-    "version": "[2.*, 2.0.0)"
+    "version": "[4.*, 5.0.0)"
   }
 }
